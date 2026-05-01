@@ -26,13 +26,12 @@ The MCP server runs over stdio through `uv`. From a local clone:
 ```bash
 git clone https://github.com/CarsonBurke/chem-development.git
 cd chem-development
-REPO="$(pwd)"
 ```
 
 ### Codex CLI
 
 ```bash
-codex mcp add chebi -- /usr/bin/uv --directory "$REPO/chebi-mcp" run chebi-mcp
+codex mcp add chebi -- /usr/bin/uv --directory "$(pwd)/chebi-mcp" run chebi-mcp
 codex mcp get chebi
 ```
 
@@ -41,14 +40,14 @@ codex mcp get chebi
 Local/project-scoped config:
 
 ```bash
-claude mcp add --scope local chebi -- /usr/bin/uv --directory "$REPO/chebi-mcp" run chebi-mcp
+claude mcp add --scope local chebi -- /usr/bin/uv --directory "$(pwd)/chebi-mcp" run chebi-mcp
 claude mcp get chebi
 ```
 
 User-scoped config:
 
 ```bash
-claude mcp add --scope user chebi -- /usr/bin/uv --directory "$REPO/chebi-mcp" run chebi-mcp
+claude mcp add --scope user chebi -- /usr/bin/uv --directory "$(pwd)/chebi-mcp" run chebi-mcp
 ```
 
 ### Gemini CLI
@@ -56,14 +55,14 @@ claude mcp add --scope user chebi -- /usr/bin/uv --directory "$REPO/chebi-mcp" r
 Project-scoped config:
 
 ```bash
-gemini mcp add --scope project chebi /usr/bin/uv --directory "$REPO/chebi-mcp" run chebi-mcp
+gemini mcp add --scope project chebi /usr/bin/uv --directory "$(pwd)/chebi-mcp" run chebi-mcp
 gemini mcp list
 ```
 
 User-scoped config:
 
 ```bash
-gemini mcp add --scope user chebi /usr/bin/uv --directory "$REPO/chebi-mcp" run chebi-mcp
+gemini mcp add --scope user chebi /usr/bin/uv --directory "$(pwd)/chebi-mcp" run chebi-mcp
 ```
 
 ### Smoke Test
@@ -71,7 +70,7 @@ gemini mcp add --scope user chebi /usr/bin/uv --directory "$REPO/chebi-mcp" run 
 You can verify the MCP server itself without an agent client:
 
 ```bash
-uv --directory "$REPO/chebi-mcp" run python - <<'PY'
+uv --directory "$(pwd)/chebi-mcp" run python - <<'PY'
 from chebi_mcp.client import ChebiClient
 
 card = ChebiClient().chemical_card("lactic acid")
