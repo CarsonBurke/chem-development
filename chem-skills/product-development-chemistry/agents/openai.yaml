@@ -1,0 +1,12 @@
+interface:
+  display_name: "Product Development Chemistry"
+  short_description: "Compare chemical options and implications"
+  default_prompt: "Use $product-development-chemistry to compare candidate chemicals for a product-development decision."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "chebi-mcp"
+      description: "ChEBI chemical reference MCP server for identity, roles, ontology relations, and alternatives."
+policy:
+  allow_implicit_invocation: true
+
