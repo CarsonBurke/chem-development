@@ -21,12 +21,46 @@ codex mcp add chebi -- /usr/bin/uv --directory chebi-mcp run chebi-mcp
 codex mcp get chebi
 ```
 
+Codex Desktop uses the same Codex MCP configuration as the CLI. If you use Codex Desktop, prefer registering the server with an absolute path so the desktop app can launch it regardless of its working directory:
+
+```bash
+codex mcp add chebi -- /usr/bin/uv --directory /absolute/path/to/chem-development/chebi-mcp run chebi-mcp
+```
+
 ### Claude Code CLI
 
 ```bash
 claude mcp add chebi -- /usr/bin/uv --directory chebi-mcp run chebi-mcp
 claude mcp get chebi
 ```
+
+### Claude Desktop
+
+Claude Desktop reads MCP servers from `claude_desktop_config.json`. Add a `mcpServers` entry using an absolute path:
+
+```json
+{
+  "mcpServers": {
+    "chebi": {
+      "command": "/usr/bin/uv",
+      "args": [
+        "--directory",
+        "/absolute/path/to/chem-development/chebi-mcp",
+        "run",
+        "chebi-mcp"
+      ]
+    }
+  }
+}
+```
+
+Common config locations:
+
+- Linux: `~/.config/Claude/claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+Restart Claude Desktop after editing the config.
 
 ### Gemini CLI
 
