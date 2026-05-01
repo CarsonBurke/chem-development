@@ -2,22 +2,8 @@
 
 Open-source chemistry product-development tooling for AI assistants.
 
-This repository currently contains two components:
-
 - `chebi-mcp`: an MCP server for the public ChEBI chemical reference API, with persistent caching and typed tools for search, compound lookup, ontology, structure search, and structure calculations.
 - `chem-skills`: Codex skills for chemistry-informed product-development collaboration, using `chebi-mcp` as the reference layer.
-
-## Repository Layout
-
-```text
-chem-development/
-├── chebi-mcp/
-└── chem-skills/
-```
-
-## Status
-
-Early scaffold. The intended direction is a practical assistant foundation for chemical identity, role-based alternatives, product-development tradeoff discussion, and source-grounded decision support.
 
 ## Add `chebi-mcp` To Agent CLIs
 
@@ -37,17 +23,9 @@ codex mcp get chebi
 
 ### Claude Code CLI
 
-Local/project-scoped config:
-
 ```bash
-claude mcp add --scope local chebi -- /usr/bin/uv --directory chebi-mcp run chebi-mcp
+claude mcp add chebi -- /usr/bin/uv --directory chebi-mcp run chebi-mcp
 claude mcp get chebi
-```
-
-User-scoped config:
-
-```bash
-claude mcp add --scope user chebi -- /usr/bin/uv --directory chebi-mcp run chebi-mcp
 ```
 
 ### Gemini CLI
@@ -55,14 +33,8 @@ claude mcp add --scope user chebi -- /usr/bin/uv --directory chebi-mcp run chebi
 Project-scoped config:
 
 ```bash
-gemini mcp add --scope project chebi /usr/bin/uv --directory chebi-mcp run chebi-mcp
+gemini mcp add chebi /usr/bin/uv --directory chebi-mcp run chebi-mcp
 gemini mcp list
-```
-
-User-scoped config:
-
-```bash
-gemini mcp add --scope user chebi /usr/bin/uv --directory chebi-mcp run chebi-mcp
 ```
 
 ### Smoke Test
